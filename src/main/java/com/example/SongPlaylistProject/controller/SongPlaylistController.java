@@ -41,19 +41,21 @@ public class SongPlaylistController {
 	}
 	
 	@PutMapping("/updateSongPlaylist/{id}")
-	public SongPlaylist updateSongPlaylist(@PathVariable Long Id, @RequestBody SongPlaylist newSongPlaylist) {
-		return this.service.updateSongPlaylist(Id, newSongPlaylist);
+	public ResponseEntity<SongPlaylist> updateSongPlaylist(@PathVariable Long id, @RequestBody SongPlaylist newSongPlaylist) {
+		return new ResponseEntity<>(this.service.updateSongPlaylist(id, newSongPlaylist), HttpStatus.ACCEPTED);
 	}
 	
 	@GetMapping("/getSongPlaylist/{id}")
-	public SongPlaylist getSongPlaylistById(@PathVariable Long Id) {
-		return this.service.getSongPlaylistById(Id);
+	public SongPlaylist getSongPlaylistById(@PathVariable Long id) {
+		return this.service.getSongPlaylistById(id);
 		
 	}
 
 	@DeleteMapping("/removeSongPlaylist/{id}")
-	public boolean removeSongPlaylist(@PathVariable Long Id) {
-		return this.service.removeSongPlaylist(Id);
+	public ResponseEntity<SongPlaylist> removeSongPlaylist(@PathVariable Long id) {
+		this.service.removeSongPlaylist(id); 
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	
 
 }
 }

@@ -24,25 +24,25 @@ public class SongPlaylistList implements SongPlaylistService {
 
 
 		@Override
-		public SongPlaylist getSongPlaylistById(Long Id) {
-			return this.songplaylists.get(Id.intValue());
+		public SongPlaylist getSongPlaylistById(Long id) {
+			return this.songplaylists.get(id.intValue());
 		}
 
 		
 		@Override
-		public boolean removeSongPlaylist(Long Id) {
+		public boolean removeSongPlaylist(Long id) {
 			// TODO Auto-generated method stub
-			SongPlaylist songplaylist = this.songplaylists.get(Id.intValue());
-			this.songplaylists.remove(Id.intValue());
+			SongPlaylist songplaylist = this.songplaylists.get(id.intValue());
+			this.songplaylists.remove(id.intValue());
 			return !this.songplaylists.contains(songplaylist);
 
 	}
 
 		@Override
-		public SongPlaylist updateSongPlaylist(Long Id, SongPlaylist newSongPlaylist) {
-			this.removeSongPlaylist(Id);
-			this.songplaylists.add(Id.intValue(), newSongPlaylist);
-			return this.songplaylists.get(Id.intValue());
+		public SongPlaylist updateSongPlaylist(Long id, SongPlaylist newSongPlaylist) {
+			this.removeSongPlaylist(id);
+			this.songplaylists.add(id.intValue(), newSongPlaylist);
+			return this.songplaylists.get(id.intValue());
 		}
 
 		@Override

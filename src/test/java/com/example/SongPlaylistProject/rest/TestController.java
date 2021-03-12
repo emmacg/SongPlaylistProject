@@ -48,7 +48,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 			SongPlaylist returnSongPlaylist = new SongPlaylist(2L, "Artist", "Song");
 			String returnJsonSongPlaylist = this.mapper.writeValueAsString(returnSongPlaylist); 
 			ResultMatcher matchingSongPlaylist = content().json(returnJsonSongPlaylist);
-			ResultMatcher matchStatus = status().isOk(); 
+			ResultMatcher matchStatus = status().isCreated(); 
 			this.mockMVC.perform(mockRequest).andExpect(matchingSongPlaylist).andExpect(matchStatus);
 			
 		}
@@ -73,11 +73,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 			
 			SongPlaylist newSongPlaylist = new SongPlaylist("Artist", "Song");
 			String jsonSongPlaylist = this.mapper.writeValueAsString(newSongPlaylist); 
-			RequestBuilder mockRequest = put("/update").contentType(MediaType.APPLICATION_JSON).content(jsonSongPlaylist);
+			RequestBuilder mockRequest = put("/updateSongPlaylist/1").contentType(MediaType.APPLICATION_JSON).content(jsonSongPlaylist);
 			SongPlaylist returnSongPlaylist = new SongPlaylist(1L, "Artist", "Song");
 			String returnJsonSongPlaylist = this.mapper.writeValueAsString(returnSongPlaylist); 
 			ResultMatcher matchingSongPlaylist = content().json(returnJsonSongPlaylist);
-			ResultMatcher matchStatus = status().isOk(); 
+			ResultMatcher matchStatus = status().isAccepted(); 
 			this.mockMVC.perform(mockRequest).andExpect(matchingSongPlaylist).andExpect(matchStatus);
 			
 		}
@@ -88,7 +88,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 			RequestBuilder mockRequest = delete("/removeSongPlaylist/1").contentType(MediaType.APPLICATION_JSON);
 			
-			ResultMatcher matchStatus = status().isOk(); 
+			ResultMatcher matchStatus = status().isNoContent(); 
 		
 			this.mockMVC.perform(mockRequest).andExpect(matchStatus);
 			

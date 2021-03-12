@@ -29,23 +29,24 @@ public class SongPlaylistServiceDB implements SongPlaylistService {
 
 
 	@Override
-	public SongPlaylist getSongPlaylistById(Long Id) {
-		Optional<SongPlaylist> GetById = this.repo.findById(Id);
+	public SongPlaylist getSongPlaylistById(Long id) {
+		Optional<SongPlaylist> GetById = this.repo.findById(id);
 		return GetById.orElse(null);
 				
 	}
 	
 	@Override
-	public boolean removeSongPlaylist(Long Id) {
+	public boolean removeSongPlaylist(Long id) {
 		// TODO Auto-generated method stub
-		this.repo.deleteById(Id);
-		return this.repo.existsById(Id);
+		this.repo.deleteById(id);
+		return this.repo.existsById(id);
 	}
 	
 
 	@Override
 	public SongPlaylist updateSongPlaylist(Long id, SongPlaylist newSongPlaylist) {
-		SongPlaylist existing = this.getSongPlaylistById(id);
+		Optional <SongPlaylist> updatePlaylist = this.repo.findById(id);
+		SongPlaylist existing = updatePlaylist.get();
 
 		existing.setArtistName(newSongPlaylist.getArtistName());
 		existing.setSongName(newSongPlaylist.getSongName());
