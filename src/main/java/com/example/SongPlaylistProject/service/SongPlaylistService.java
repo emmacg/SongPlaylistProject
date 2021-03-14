@@ -7,15 +7,15 @@ import com.example.SongPlaylistProject.domain.SongPlaylist;
 public interface SongPlaylistService {
 
 
-	SongPlaylist getSongPlaylistById(Long Id);
+	SongPlaylist getSongPlaylistById(Long id);
 
-	SongPlaylist updateSongPlaylist(Long Id, SongPlaylist newSongPlaylist);
+	SongPlaylist updateSongPlaylist(Long id, SongPlaylist newSongPlaylist);
 
 	List<SongPlaylist> read();
 
 	SongPlaylist createSongPlaylist(SongPlaylist songplaylist);
 
-	boolean removeSongPlaylist(Long Id);
+	boolean removeSongPlaylist(Long id);
 
 
 }
